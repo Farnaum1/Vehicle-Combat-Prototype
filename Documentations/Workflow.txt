@@ -1,0 +1,43 @@
+Assets/
+│
+├── _Project/
+│   ├── Scripts/
+│   │   ├── Core/
+│   │   │   ├── GameEvents.cs
+│   │   │   ├── TeamId.cs
+│   │   │   └── GameConstants.cs
+│   │   │
+│   │   ├── Damage/
+│   │   │   ├── IDamageable.cs
+│   │   │   └── DamageInfo.cs
+│   │   │
+│   │   ├── Vehicles/
+│   │   │   ├── Vehicle.cs
+│   │   │   ├── Car.cs
+│   │   │   ├── Tank.cs
+│   │   │   └── VehicleData.cs
+│   │   │
+│   │   ├── Weapons/
+│   │   │   ├── Weapon.cs
+│   │   │   ├── MachineGun.cs
+│   │   │   ├── RocketLauncher.cs
+│   │   │   └── WeaponData.cs
+│   │   │
+│   │   ├── Spawning/
+│   │   │   ├── SpawnManager.cs
+│   │   │   └── SpawnPoint.cs
+│   │   │
+│   │   └── Score/
+│   │       └── ScoreManager.cs
+│   │
+│   ├── ScriptableObjects/
+│   │   ├── Vehicles/
+│   │   └── Weapons/
+│   │
+│   ├── Prefabs/
+│   │   ├── Vehicles/
+│   │   ├── Weapons/
+│   │   └── Projectiles/
+│   │
+│   ├── Materials/
+│   └── Scenes/
