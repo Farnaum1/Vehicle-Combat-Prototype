@@ -139,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 2940812632001417024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.35, z: 0.8}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -524,6 +524,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3073954893695957170}
+  - component: {fileID: 7312692411049332062}
+  - component: {fileID: 5710077321707887239}
   m_Layer: 0
   m_Name: Car_Prefab
   m_TagString: Untagged
@@ -553,6 +555,36 @@ Transform:
   - {fileID: 4102606420612265729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7312692411049332062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5188409813074187572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9601be2422b2a4d44931a24bb0b68cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Car
+  vehicleData: {fileID: 11400000, guid: bcc46735fd0a4e04c82c242b20001633, type: 2}
+  teamId: 1
+  weaponMountPoint: {fileID: 4102606420612265729}
+--- !u!114 &5710077321707887239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5188409813074187572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95339bf83146b94db7fb70088620425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleAIController
+  detectionRange: 40
+  attackRange: 25
+  stopDistance: 10
 --- !u!1 &5385624380181056239
 GameObject:
   m_ObjectHideFlags: 0

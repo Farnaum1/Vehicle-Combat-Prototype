@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55cb44f3b2d78ae4cb807fbced8d1d01, type: 3}
-  m_Name: TankData
+  m_Name: CarData
   m_EditorClassIdentifier: Assembly-CSharp::VehicleData
-  vehicleName: Panther
-  vehiclePrefab: {fileID: 8670679285453119269, guid: c31414ec49f95ab4d9b10b9ff94eb570, type: 3}
-  maxHealth: 700
-  moveSpeed: 1
-  rotationSpeed: 50
-  defaultWeapon: {fileID: 11400000, guid: 315bbd18279138e4b9f26317dad8bec0, type: 2}
+  vehicleName: Raptor
+  vehiclePrefab: {fileID: 5188409813074187572, guid: e6a5f2d14b9fe714494fa9579b507b3e, type: 3}
+  maxHealth: 500
+  moveSpeed: 10
+  rotationSpeed: 180
+  defaultWeapon: {fileID: 11400000, guid: b7b643030314b7f438bd75d09e7a66d3, type: 2}

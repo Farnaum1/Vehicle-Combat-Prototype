@@ -8,11 +8,16 @@ public abstract class Vehicle : MonoBehaviour, IDamageable
     [Header("Runtime")]
     [SerializeField] private TeamId teamId = TeamId.None;
 
+    [Header("Weapon")]
+    [SerializeField] private Transform weaponMountPoint;
+
     private float currentHealth;
     private bool isDestroyed;
+    private Weapon currentWeapon;
 
     public VehicleData Data => vehicleData;
     public TeamId TeamId => teamId;
+    public Weapon CurrentWeapon => currentWeapon;
 
     public float CurrentHealth => currentHealth;
     public float MaxHealth => vehicleData != null ? vehicleData.maxHealth : 0f;
@@ -21,6 +26,7 @@ public abstract class Vehicle : MonoBehaviour, IDamageable
     protected virtual void Awake()
     {
         InitializeFromData();
+        SpawnDefaultWeapon();
     }
 
     protected virtual void InitializeFromData()
@@ -35,9 +41,60 @@ public abstract class Vehicle : MonoBehaviour, IDamageable
         isDestroyed = false;
     }
 
+    protected virtual void SpawnDefaultWeapon()
+    {
+        if (vehicleData == null)
+            return;
+
+        if (vehicleData.defaultWeapon == null)
+        {
+            Debug.LogWarning($"{name} has no default weapon assigned.", this);
+            return;
+        }
+
+        if (vehicleData.defaultWeapon.weaponPrefab == null)
+        {
+            Debug.LogWarning($"{vehicleData.defaultWeapon.name} has no weapon prefab assigned.", vehicleData.defaultWeapon);
+            return;
+        }
+
+        Transform mount = weaponMountPoint != null ? weaponMountPoint : transform;
+
+        GameObject weaponObject = Instantiate(vehicleData.defaultWeapon.weaponPrefab, mount.position, mount.rotation, mount);
+
+        currentWeapon = weaponObject.GetComponent<Weapon>();
+
+        if (currentWeapon == null)
+        {
+            Debug.LogError("Weapon prefab does not have a Weapon component.", weaponObject);
+            return;
+        }
+
+        currentWeapon.Initialize(gameObject, teamId);
+    }
+
     public virtual void SetTeam(TeamId newTeamId)
     {
         teamId = newTeamId;
+
+        if (currentWeapon != null)
+        {
+            currentWeapon.Initialize(gameObject, teamId);
+        }
+    }
+
+    public virtual void FireWeapon()
+    {
+        if (isDestroyed)
+            return;
+
+        if (currentWeapon == null)
+        {
+            Debug.LogWarning($"{name} has no current weapon.", this);
+            return;
+        }
+
+        currentWeapon.TryFire();
     }
 
     public virtual void TakeDamage(DamageInfo damageInfo)
@@ -54,7 +111,15 @@ public abstract class Vehicle : MonoBehaviour, IDamageable
         currentHealth -= damageInfo.Amount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, MaxHealth);
 
-        GameEvents.RaiseVehicleDamaged (new VehicleDamagedEventArgs(gameObject, teamId, damageInfo, currentHealth, MaxHealth));
+        GameEvents.RaiseVehicleDamaged(
+            new VehicleDamagedEventArgs(
+                gameObject,
+                teamId,
+                damageInfo,
+                currentHealth,
+                MaxHealth
+            )
+        );
 
         if (currentHealth <= 0f)
         {
@@ -81,7 +146,14 @@ public abstract class Vehicle : MonoBehaviour, IDamageable
 
         isDestroyed = true;
 
-        GameEvents.RaiseVehicleDestroyed (new VehicleDestroyedEventArgs (gameObject, teamId, damageInfo.AttackerTeamId, damageInfo.Attacker));
+        GameEvents.RaiseVehicleDestroyed(
+            new VehicleDestroyedEventArgs(
+                gameObject,
+                teamId,
+                damageInfo.AttackerTeamId,
+                damageInfo.Attacker
+            )
+        );
 
         gameObject.SetActive(false);
     }

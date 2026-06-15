@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24be233ef173094db2c05deacd7765a, type: 3}
-  m_Name: MachineGunData
+  m_Name: RocketLauncherData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: Tommy Gun
-  weaponPrefab: {fileID: 8825456524397313025, guid: 1cc4e74a72cd6bf4989f49ff81b07ac0, type: 3}
-  damage: 5
-  fireRate: 0.2
-  range: 50
-  projectilePrefab: {fileID: 0}
-  projectileSpeed: 0
+  weaponName: Bazuka
+  weaponPrefab: {fileID: 7685156492268222078, guid: 868c805d45cf6b34d913425313673761, type: 3}
+  damage: 10
+  fireRate: 1
+  range: 70
+  projectilePrefab: {fileID: 4582097868334148710, guid: e3858c0df566baa4a993816fd587558d, type: 3}
+  projectileSpeed: 1

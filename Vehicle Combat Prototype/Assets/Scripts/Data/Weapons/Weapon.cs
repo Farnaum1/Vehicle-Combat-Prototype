@@ -26,20 +26,27 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void TryFire()
     {
+        if (weaponData == null)
+        {
+            Debug.LogError($"{name} has no WeaponData assigned.", this);
+            return;
+        }
+
         if (!CanFire)
             return;
 
         Fire();
+
         nextFireTime = Time.time + weaponData.fireRate;
 
-        GameEvents.RaiseWeaponFired (new WeaponFiredEventArgs (gameObject, ownerObject, ownerTeamId));
+        GameEvents.RaiseWeaponFired(new WeaponFiredEventArgs(gameObject, ownerObject, ownerTeamId));
     }
 
     protected abstract void Fire();
 
     protected DamageInfo CreateDamageInfo(Vector3 hitPoint)
     {
-        return new DamageInfo (weaponData.damage, ownerTeamId, ownerObject, hitPoint);
+        return new DamageInfo(weaponData.damage, ownerTeamId, ownerObject, hitPoint);
     }
 
     protected Transform FirePoint
