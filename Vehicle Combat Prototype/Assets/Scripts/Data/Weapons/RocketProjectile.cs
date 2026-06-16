@@ -10,6 +10,13 @@ public class RocketProjectile : MonoBehaviour
 
     private bool initialized;
 
+    private Collider[] projectileColliders;
+
+    private void Awake()
+    {
+        projectileColliders = GetComponentsInChildren<Collider>();
+    }
+
     public void Initialize(float damage, float speed, TeamId ownerTeamId, GameObject ownerObject)
     {
         this.damage = damage;
@@ -21,6 +28,8 @@ public class RocketProjectile : MonoBehaviour
 
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.linearVelocity = transform.forward * speed;
+
+        IgnoreOwnerCollisions();
 
         Destroy(gameObject, 5f);
     }
@@ -45,5 +54,24 @@ public class RocketProjectile : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    private void IgnoreOwnerCollisions()
+    {
+        if (ownerObject == null)
+            return;
+
+        Collider[] ownerColliders = ownerObject.GetComponentsInChildren<Collider>();
+
+        foreach (Collider projectileCol in projectileColliders)
+        {
+            foreach (Collider ownerCol in ownerColliders)
+            {
+                if (projectileCol != null && ownerCol != null)
+                {
+                    Physics.IgnoreCollision(projectileCol, ownerCol);
+                }
+            }
+        }
     }
 }

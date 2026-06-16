@@ -15,6 +15,6 @@ MonoBehaviour:
   vehicleName: Panther
   vehiclePrefab: {fileID: 8670679285453119269, guid: c31414ec49f95ab4d9b10b9ff94eb570, type: 3}
   maxHealth: 700
-  moveSpeed: 1
+  moveSpeed: 2
   rotationSpeed: 50
   defaultWeapon: {fileID: 11400000, guid: 315bbd18279138e4b9f26317dad8bec0, type: 2}

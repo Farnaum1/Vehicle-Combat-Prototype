@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: Bazuka
   weaponPrefab: {fileID: 7685156492268222078, guid: 868c805d45cf6b34d913425313673761, type: 3}
-  damage: 10
+  damage: 20
   fireRate: 1
   range: 70
   projectilePrefab: {fileID: 4582097868334148710, guid: e3858c0df566baa4a993816fd587558d, type: 3}
-  projectileSpeed: 1
+  projectileSpeed: 70

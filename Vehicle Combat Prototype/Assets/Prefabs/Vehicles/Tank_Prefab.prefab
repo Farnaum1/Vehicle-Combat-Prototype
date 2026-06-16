@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 687566964627602825}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.25}
+  m_LocalPosition: {x: 0, y: 0, z: 1.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -465,8 +465,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VehicleAIController
   detectionRange: 60
-  attackRange: 25
-  stopDistance: 10
+  targetRefreshInterval: 1
+  attackRange: 35
+  preferredDistance: 24
+  tooCloseDistance: 12
+  strafeWeight: 0.5
+  dodgeChangeInterval: 1.5
+  movementNoise: 0.25
+  useCoverWhenLowHealth: 1
+  lowHealthPercent: 0.35
+  coverSearchRange: 35
+  coverReachDistance: 3
 --- !u!1 &8793895772356317853
 GameObject:
   m_ObjectHideFlags: 0

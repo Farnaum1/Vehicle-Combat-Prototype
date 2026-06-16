@@ -582,9 +582,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95339bf83146b94db7fb70088620425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VehicleAIController
-  detectionRange: 40
-  attackRange: 25
-  stopDistance: 10
+  detectionRange: 50
+  targetRefreshInterval: 1
+  attackRange: 22
+  preferredDistance: 14
+  tooCloseDistance: 7
+  strafeWeight: 0.8
+  dodgeChangeInterval: 1.2
+  movementNoise: 0.35
+  useCoverWhenLowHealth: 1
+  lowHealthPercent: 0.35
+  coverSearchRange: 35
+  coverReachDistance: 3
 --- !u!1 &5385624380181056239
 GameObject:
   m_ObjectHideFlags: 0
