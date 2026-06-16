@@ -146,14 +146,7 @@ public abstract class Vehicle : MonoBehaviour, IDamageable
 
         isDestroyed = true;
 
-        GameEvents.RaiseVehicleDestroyed(
-            new VehicleDestroyedEventArgs(
-                gameObject,
-                teamId,
-                damageInfo.AttackerTeamId,
-                damageInfo.Attacker
-            )
-        );
+        GameEvents.RaiseVehicleDestroyed(new VehicleDestroyedEventArgs(gameObject, teamId, damageInfo.AttackerTeamId, damageInfo.Attacker));
 
         gameObject.SetActive(false);
     }

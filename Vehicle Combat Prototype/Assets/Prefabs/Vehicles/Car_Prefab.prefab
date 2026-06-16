@@ -584,7 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VehicleAIController
   detectionRange: 50
   targetRefreshInterval: 1
-  attackRange: 22
+  attackRange: 30
   preferredDistance: 14
   tooCloseDistance: 7
   strafeWeight: 0.8

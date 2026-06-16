@@ -38,7 +38,6 @@ public class SpawnManager : MonoBehaviour
             SpawnVehicle(spawnInfo);
         }
 
-        Debug.Log($"SpawnManager spawned {spawnedVehicles.Count} vehicles.");
     }
 
     private void SpawnVehicle(VehicleSpawnInfo spawnInfo)
